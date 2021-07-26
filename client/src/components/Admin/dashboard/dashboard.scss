@@ -1,0 +1,127 @@
+@import '../../ultils/initial.scss';
+
+.dashboard{
+    transform: translate(10px, 10px);
+    .page_title{
+        padding: 10px;
+        border-bottom: 1px solid #dddddd;
+    }
+    .button{
+        display: flex;
+        .filter,.sort{
+           button{
+               background: #b3b3b3;
+               border: none;
+               color: white;
+               width: 100px;
+           }
+        }
+        .filter{
+            margin-left: 10px;
+        }
+    }
+    .wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        .avt{
+            width: 50px;
+            height: 50px;
+            flex-shrink: 0;
+            img{
+                height:100%;
+                width: 100%;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+        }
+        .report_info{
+            display: flex;
+            flex-direction: column;
+            margin-left: 20px;
+            .name{
+                font-weight: bold;
+            }
+            .date{
+                color:#919191;
+            }
+            p{
+                margin: 0;
+                padding: 0;
+            }
+        }
+    }
+    .report-list{
+        width: 100%;
+        padding: 20px;
+        .report{
+            width: 55%;
+        }
+        .status,.admin{
+            width: 22.5%;
+        }
+        .table-header{
+            th{
+                padding: 10px;
+                border-bottom: 1px solid #dddddd;
+            }
+        }
+        .table-content{
+            td{
+                padding: 10px;
+                border-bottom: 1px solid #dddddd;
+            }
+        }
+    }
+    .loadmore{
+        margin: 10px;
+        width:100%;
+        .loadmore-btn{
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            background: $primaryColor;  
+            color: white;  
+        }
+    }
+}
+
+@media screen and (max-width: 1024px){
+    .report-list{
+        .table-header{
+            th{
+                 font-size: 1rem;
+            }
+        }
+        .table-content{
+            font-size: 1.3rem;
+           
+        }
+    }
+}
+
+@media screen and (max-width: 922px){
+ .report-list{
+     .table-header{
+            th{
+                 font-size: 2rem;
+            }
+        }
+        .table-content{
+            font-size: 1rem;
+        }
+    }
+}
+
+@media screen and (max-width: 768px){
+    .report-list{
+        .table-header{
+          
+            font-size: 1.3rem;
+            
+        }
+        .table-content{
+            font-size: 1rem;
+        }
+    }
+}

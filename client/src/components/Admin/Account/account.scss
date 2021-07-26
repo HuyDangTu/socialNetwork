@@ -1,0 +1,143 @@
+@import '../../ultils/initial.scss';
+
+.account{
+    .page_title{
+        padding: 10px;
+        border-bottom: 1px solid #dddddd;
+    }
+
+    h4{
+        color: #969696
+    }
+    .avt{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    .button{
+        padding: 10px;
+        display: flex;
+        .filter,.sort{
+           
+           button{
+               background: #b3b3b3;
+               border: none;
+               color: white;
+               width: 100px;
+           }
+        }
+        .filter{
+            margin-left: 10px;
+        }
+    }
+    .report-list{
+        width: 100%;
+        .name{
+            width: 15%;
+        }
+        .role{
+            width: 15%;
+        }
+        .userName{
+            width: 25%;
+        }
+        .email{
+            width: 35%;
+        }
+        .table-header{
+            th{
+                padding: 10px 10px 10px 0px;
+                border-bottom: 1px solid #dddddd;
+            }
+        }
+        .table-content{
+            td{
+                padding: 10px 10px 10px 0px;
+                border-bottom: 1px solid #dddddd;
+            }
+        }
+    }
+    .add_btn{
+        border: none;
+        border-radius: 5px;
+        padding: 6px 15px 6px 15px;
+        color: white;
+        background: $primaryColor;   
+        float: right; 
+    }
+    .loadmore{
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        background: $primaryColor;  
+        color: white; 
+        float: right; 
+        margin: 20px;
+    }
+}
+
+@media screen and (max-width: 922px){
+ .report-list{
+    .table-header{
+            th{
+                 font-size: 0.6em;
+            }
+        }
+        .table-content{
+            td{
+                font-size: 0.8em;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px){
+    .page_container{
+        .account{
+            .report-list{
+                .table-header{
+                    
+                }
+                .table-content{
+                   
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px){
+    .page_container{
+        .account{
+            .report-list{
+                .table-header{
+                    width: 100%;
+                    .userName{
+                        width: 25%;
+                    }
+                    .email{
+                        width: 55%;
+                    }
+                    .hidden{
+                        display: none;
+                    }
+                }
+                .table-content{
+                    width: 100%;
+                    .userName{
+                        width: 25%;
+                    }
+                    .email{
+                        width: 55%;
+                    }
+                    .hidden{
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+

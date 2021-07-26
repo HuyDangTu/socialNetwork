@@ -1,0 +1,134 @@
+@import "./common.scss";
+@import '../ultils/initial.scss';
+
+$hover-input-color: rgba(88, 159, 207, 0.835);
+$solid-color: rgba(15, 15, 15, 0.2);
+$result-text-color: #424444;
+@media only screen and (max-width : 768px){
+    .search{
+     visibility: hidden;
+    }
+}
+.search {
+  width: 100%;
+  .search-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  .title {
+    margin-bottom: 1em;
+    font-size: 27px;
+    color: $base-color;
+  }
+  .content {
+    width: 100%;
+    .wrapper{
+      width: 100%;
+      display: flex;
+      align-items: center;
+     height: 5vh;
+      padding: 5px 10px 5px 10px;
+      color: #BDBAC2;
+      background: #F5F5F5;
+      border-radius: 50px;
+      input {
+        width: 100%;
+        border: 0;
+        border-radius: 3px;
+        padding: 0 10px;
+        font-size: 15px;
+        background: transparent;
+        outline: 0;
+        color: black;
+        transition: all, 200ms ease-in-out;
+        &::placeholder {
+          color: $base-color;
+        }
+      }
+     }
+     &:focus {
+        box-shadow: 0px 0px 19px 3.1px $hover-input-color;
+    }
+  }
+}
+}
+
+//Popup
+.messpopup {
+  width: 93%;
+  padding:16px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  box-shadow: 0px 0px 15px 2px $solid-color;
+  margin-top: 7px;
+  // border-radius: 0px 0px 5px 5px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 10;
+  .container {
+    padding:0;
+    .content {
+      height: 100%;
+      padding: 0 0 30px 0;
+      h5{
+       
+        color: $primaryColor;
+      }
+      .item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+
+        color: $result-text-color;
+        transition: all, 230ms ease-in;
+        &:last-child {
+          cursor: pointer;
+        }
+        &:hover {
+          background-color: #aacbe06e;
+        }
+        .user_infor_wrapper{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+         
+           margin: 16px 18px 16px 0px;
+         .userinfo{
+           display: flex;
+            align-items: center;
+          img{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+          }
+          p{
+            margin: 0;
+            color:black;
+            padding: 0px 10px;
+          }
+         }
+        }
+        .tag_infor_wrapper{
+          width:100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px;
+          h6{
+              margin:0;
+          }
+          p{
+            margin:0;
+            color: $base-color;
+          }
+        }
+      }
+    }
+   
+  }
+}

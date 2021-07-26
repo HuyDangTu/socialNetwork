@@ -1,0 +1,30 @@
+@import '../../ultils/initial.scss';
+
+.layout{
+    height: 100vh;
+    padding: 0;
+    margin:0;
+    .wrapper{
+        height: 100%;
+    }
+    .sideBar{
+        .sideBar_wrapper{
+            height: 100vh;
+            
+        }
+    }
+    .page_container{
+         height: 100vh;
+        overflow: auto;
+    }
+}
+
+@media screen and (max-width: 576px){
+    .layout{
+        .sideBar{
+            .sideBar_wrapper{
+                height: auto;
+            }
+        }
+    }
+}

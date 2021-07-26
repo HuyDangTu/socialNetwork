@@ -1,0 +1,115 @@
+@import '../ultils/initial.scss';
+.photoEditor{
+    position: relative;
+    overflow-y: hidden;
+    .CirclarProcess{
+        position: absolute;
+        z-index: 100;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+    .header{
+        z-index: 1000;
+        position: absolute;
+        width: 70%;
+        background-color: $blueColor;
+        border-radius: 0px 0px 100px 0px;
+        border: none;
+        .header-wrapper{
+            padding: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            border: none;
+            .header__logo{
+                width: auto;
+                .Logo_stunn{
+                        width: 3rem;
+                }
+                .Logo_text{
+                    width: 4rem;
+                    margin-left: 0.5rem;
+                }
+            }
+            .close_button{
+                width: 2rem;
+                i{
+                    font-size: 2rem;
+                    color: white;
+                }
+            }
+            .btn-cancel{
+               
+            }
+            .btn-complete{
+                //background-color: $primaryColor;
+                color: black;
+                margin-right: 35px;
+            }
+        }
+    }
+    .message{
+        margin: 2rem;
+        font-size: 1.2rem;
+        display: none;
+    }
+}
+
+.tui-image-editor{
+    &-header{
+        // display: none;
+    }
+    &-main-container{
+        background-color: white !important;
+    }
+    &-menu{
+        background-color: white;
+        &-filter{
+            span{
+                color: #8e8e8e !important;
+                &::before{
+                  background-color: #e6e6e6 !important;
+                }
+            }
+        }
+    }
+    &-submenu{
+        &-style{
+            background-color: white !important;
+        }
+        
+    }
+}
+
+.tui-image-editor-align-wrap{
+    padding:0;
+}
+
+.tui-image-editor-download-btn{
+    background-color: $blueColor !important;
+    border: none !important;
+    color: black !important;
+}
+
+
+@media screen and (max-width: 1024px){
+    .tui-image-editor-header{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+@media screen and (max-width: 768px){
+    .photoEditor{
+        .header{
+           display: none;
+        }
+        .tui-image-editor-container{
+            display: none;
+        }
+        .message{
+            display: block;
+        }
+    }
+}
