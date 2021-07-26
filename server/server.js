@@ -29,7 +29,6 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
-app.use(express.static('client/build'))
 require('dotenv').config();
 
 const mongoose = require('mongoose');
@@ -84,6 +83,8 @@ mongoose.connection.once('connected', async () => {
 mongoose.connection.on('connected', () => {
     console.log("mongoose is ready");
 })
+
+app.use(express.static('client/build'))
 
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
@@ -168,12 +169,12 @@ app.post('/api/pusher/auth/:id', (req, res) => {
 });
 
 
-if (process.env.NODE_ENV === 'production') {
-    const path = require('path');
-    app.get('/*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'))
-    })
-}
+// if (process.env.NODE_ENV === 'production') {
+//     const path = require('path');
+//     app.get('/*', (req, res) => {
+//         res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'))
+//     })
+// }
 
 const port = process.env.PORT || 3002;
 app.listen(port, () => {
