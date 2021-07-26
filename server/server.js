@@ -30,7 +30,6 @@ const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
 app.use(express.static('client/build'))
-
 require('dotenv').config();
 
 const mongoose = require('mongoose');
@@ -141,13 +140,6 @@ if(process.env.NODE_ENV === 'production'){
     })
 }
 
-const port = process.env.PORT || 3002;
-app.listen(port, () => {
-    {
-        console.log(`Server is running at ${port}`);
-    }
-})
-
 app.post('/api/pusher/auth/:id', (req, res) => {
     const socketId = req.body.socket_id;
     const channel = req.body.channel_name;
@@ -175,6 +167,20 @@ app.post('/api/pusher/auth/:id', (req, res) => {
     })
 });
 
+
+if (process.env.NODE_ENV === 'production') {
+    const path = require('path');
+    app.get('/*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'))
+    })
+}
+
+const port = process.env.PORT || 3002;
+app.listen(port, () => {
+    {
+        console.log(`Server is running at ${port}`);
+    }
+})
 
 // const client = require('twilio')("AC4a646aa80898fb472a5f6e875787c5fb", "2122dfed4e52f1f1299d3992ce9e5f1d");
 // client.tokens.create().then(token => console.log(token.iceServers));
