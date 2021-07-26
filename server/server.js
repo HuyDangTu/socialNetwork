@@ -133,14 +133,6 @@ app.use(require('./Routes/statistics'))
 app.use(require('./Routes/stories'))
 app.use(require('./Routes/tags'))
 
-
-if(process.env.NODE_ENV === 'production'){
-    const path = require('path');
-    app.get('*',(req,res)=>{
-        res.sendFile(path.resolve(__dirname,'../client','src','index.js'))
-    })
-}
-
 app.post('/api/pusher/auth/:id', (req, res) => {
     const socketId = req.body.socket_id;
     const channel = req.body.channel_name;
