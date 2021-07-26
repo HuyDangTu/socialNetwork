@@ -84,13 +84,13 @@ mongoose.connection.on('connected', () => {
     console.log("mongoose is ready");
 })
 
-app.use(express.static('client/build'))
-
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
     api_key: process.env.CLOUD_API_KEY,
     api_secret: process.env.CLOUD_API_SECRET,
 })
+
+app.use(express.static('client/build'))
 
 // ============== MODEL ===============
 const { User } = require("./models/user");
@@ -169,12 +169,12 @@ app.post('/api/pusher/auth/:id', (req, res) => {
 });
 
 
-// if (process.env.NODE_ENV === 'production') {
-//     const path = require('path');
-//     app.get('/*', (req, res) => {
-//         res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'))
-//     })
-// }
+if (process.env.NODE_ENV === 'production') {
+    const path = require('path');
+    app.get('/*', (req, res) => {
+        res.sendfile(path.resolve(__dirname, '../client', 'build', 'index.html'))
+    })
+}
 
 const port = process.env.PORT || 3002;
 app.listen(port, () => {
