@@ -30,7 +30,7 @@ class FacebookLoginButton extends Component {
                     let data = {
                         name: response.name,
                         email: response.email,
-                        picture: response.data.image.url,
+                        picture: response.picture.data.url,
                     }
                     this.props.dispatch(storeInfoForRegister(data));
                     this.props.history.push('/register');
