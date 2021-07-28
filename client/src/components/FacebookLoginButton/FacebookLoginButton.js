@@ -27,13 +27,13 @@ class FacebookLoginButton extends Component {
                     this.props.history.push('/newfeed')
                 }else {
                     console.log(response)
-                    // let data = {
-                    //     name: response.name,
-                    //     email: response.email,
-                    //     picture: response.image.url,
-                    // }
-                    // this.props.dispatch(storeInfoForRegister(data));
-                    // this.props.history.push('/register');
+                    let data = {
+                        name: response.name,
+                        email: response.email,
+                        picture: response.data.image.url,
+                    }
+                    this.props.dispatch(storeInfoForRegister(data));
+                    this.props.history.push('/register');
                 }
             });
         }

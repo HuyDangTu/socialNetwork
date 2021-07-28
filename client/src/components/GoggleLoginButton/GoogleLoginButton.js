@@ -58,7 +58,7 @@ class GoogleLoginButton extends Component {
             <GoogleLogin 
                 clientId="951803019708-gs8na9tkemvqrkj6pcq6s93vku37gn22.apps.googleusercontent.com"
                 render={renderProps => (
-                     <button onClick={renderProps.onClick} disabled={renderProps.disabled} className='gmail_signin_button' >
+                    <button onClick={renderProps.onClick} disabled={renderProps.disabled} className='gmail_signin_button' >
                         <img src={require('../../asset/login-page/mail_Icon.png')} />Đăng nhập bằng Gmail
                     </button>
                 )}

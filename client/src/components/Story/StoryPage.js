@@ -445,14 +445,15 @@ class StoryPage extends Component {
                             <ul>
                                 {
                                     this.state.storyToShow.stories[this.state.startIndex].viewedBy.map((item,idx) =>{
-                                        return <div className="item" key={idx}>
-                                            <div onClick={() => {
-                                                // this.LinkTo("user",item._id)
-                                            }} className="user_infor_wrapper">
-                                                <img src={item.avt} />
-                                                <p>{item.userName}</p>
+                                        if (item._id != this.props.user.userData._id)
+                                            return <div className="item" key={idx}>
+                                                <div onClick={() => {
+                                                    // this.LinkTo("user",item._id)
+                                                }} className="user_infor_wrapper">
+                                                    <img src={item.avt} />
+                                                    <p>{item.userName}</p>
+                                                </div>
                                             </div>
-                                        </div>
                                     })
                                 }
                             </ul>
