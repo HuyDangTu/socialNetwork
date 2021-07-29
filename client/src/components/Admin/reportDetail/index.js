@@ -502,12 +502,12 @@ class ReportDetail extends Component {
                                         </div>
                                     <p>Ngày: <b>{moment(detail.createdAt).fromNow()}</b></p>
                                     <p>Tình trạng: <b>{detail.status ?"Đã xử lý":"Chưa xủ lý"}</b></p>
-                                    <p>Chính sách vi phạm</p>
+                                    {/* <p>Chính sách vi phạm</p>
                                     <div>
                                         {
                                             this.renderPolicies(detail.reportAbout)
                                         }
-                                    </div>
+                                    </div> */}
                                     {
                                         !detail.status ? 
                                         <div className="button_wrapper">
@@ -533,8 +533,9 @@ class ReportDetail extends Component {
                                                 }}>Xóa nội dung</button>
                                                 }
                                         </div>
-                                        : <p>Đã xử lý ngày: <b>{moment(detail.updatedAt).fromNow()} </b></p>
+                                        : "" 
                                     }
+                                    {/* <p>Đã xử lý ngày: <b>{moment(detail.updatedAt).fromNow()} </b></p> */}
                                 </div>
                             </div>
                         </div>
