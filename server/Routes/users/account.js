@@ -82,7 +82,7 @@ router.post('/api/users/register', jsonParser, (req, res) => {
             User.findOne({ email: req.body.email }, (err, user) => {
                 console.log(user)
                 if (user) {
-                    message += "Username đã được sử dụng!";
+                    message += "Email đã được sử dụng!";
                     //isValidUserName = false;
                     res.json({ success: false, err: message });
                 } else {
@@ -90,7 +90,7 @@ router.post('/api/users/register', jsonParser, (req, res) => {
                 const newUser = new User(req.body);
                 newUser.save((err, user) => {
                     if (err) return res.json({ success: false, err: "Thêm không thành công" });
-                    sendEmail(user.email, user.userName, null, "welcome")
+                    //sendEmail(user.email, user.userName, null, "welcome")
                     return res.status(200).json({
                         success: true,
                         message: "Thành công"

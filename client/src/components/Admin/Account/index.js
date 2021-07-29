@@ -109,7 +109,7 @@ class AccountPage extends Component {
                                     </tr>
                                     {
                                         accounts.list.map((item) => (
-                                            <tr className="table-content" onClick={() => this.toDetail(item)}>
+                                            <tr className="table-content">
                                                 <td><img className="avt" src={item.avt} /></td>
                                                 <td className="name hidden">
                                                     {item.name}

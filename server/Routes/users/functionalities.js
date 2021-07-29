@@ -300,48 +300,80 @@ router.post('/api/users/searchmess', auth, (req, res) => {
         })
 })
 
-
 router.put('/api/users/update/:id', auth, jsonParser, (req, res) => {
+    // let message = "", isValidUserName = false;
+    // User.findOne({ userName: req.body.userName.trim() }, (err, user) => {
+    //     console.log(user)
+    //     if (user) {
+    //         if( JSON.stringify(user._id) == JSON.stringify(req.user._id))
+    //         {
+    //           isValidUserName = true;
+    //         }
+    //         else{
+    //             message += "Username đã được sử dụng";
+    //             isValidUserName = false;
+    //         }
+    //     } else {
+    //         isValidUserName = true;
+    //     }
+    // }).then(() => {
+    //     if (isValidUserName) {
+    //         User.findByIdAndUpdate(req.params.id,
+    //             {
+    //                 $set: {
+    //                     userName: req.body.userName.trim(),
+    //                     bio: req.body.bio,
+    //                     name: req.body.name,
+    //                     email: req.body.email.trim(),
+    //                     dob: req.body.dob,
+    //                     nationality: req.body.nationality
+    //                 }
+    //             }, {
+    //             new: false
+    //         }, function (err, doc) {
+    //             if (err) {
+    //                 res.send(err)
+    //             }
+    //         }).then(result =>
+    //             res.json({ success: true, message: "Thành công" })
+    //         )
+    //     }
+    //     else {
+    //         return res.json({ success: false, message: "Vui lòng thử lại" });
+    //     }
+    // })
     let message = "", isValidUserName = false;
-    User.findOne({ userName: req.body.userName.trim() }, (err, user) => {
+    User.findOne({ userName: req.body.userName}, (err, user) => {
         console.log(user)
-        if (user) {
-            if( JSON.stringify(user._id) == JSON.stringify(req.user._id))
-            {
-              isValidUserName = true;
-            }
-            else{
-                message += "Username đã được sử dụng";
-                isValidUserName = false;
-            }
+        if (user && JSON.stringify(user._id) !== JSON.stringify(req.user._id)) {
+            message += "Username đã được sử dụng!";
+            res.json({ success: false, err: message });
         } else {
-            isValidUserName = true;
-        }
-    }).then(() => {
-        if (isValidUserName) {
-            User.findByIdAndUpdate(req.params.id,
-                {
-                    $set: {
-                        userName: req.body.userName.trim(),
-                        bio: req.body.bio,
-                        name: req.body.name,
-                        email: req.body.email.trim(),
-                        privateMode: req.body.privateMode,
-                        dob: req.body.dob,
-                        nationality: req.body.nationality
-                    }
-                }, {
-                new: false
-            }, function (err, doc) {
-                if (err) {
-                    res.send(err)
+            User.findOne({ email: req.body.email }, (err, user) => {
+                console.log(user)
+                if (user && JSON.stringify(user._id) !== JSON.stringify(req.user._id)) {
+                    message += "Email đã được sử dụng!";
+                    res.json({ success: false, err: message });
+                } else {
+                    User.findByIdAndUpdate(req.params.id,
+                    {
+                        $set: {
+                            userName: req.body.userName.trim(),
+                            bio: req.body.bio,
+                            name: req.body.name,
+                            email: req.body.email.trim(),
+                            // privateMode: req.body.privateMode,
+                            dob: req.body.dob,
+                            nationality: req.body.nationality
+                        }
+                    }, {
+                        new: false
+                    }, function (err, doc) {
+                        if (err) {res.send({success: true, message: "Vui lòng thử lại"})}
+                        res.json({ success: true, message: "Thành công" })
+                    })  
                 }
-            }).then(result =>
-                res.json({ success: true, message: "Thành công" })
-            )
-        }
-        else {
-            return res.json({ success: false, message: message });
+            });
         }
     })
 })

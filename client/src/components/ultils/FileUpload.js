@@ -60,19 +60,28 @@ class FileUpload extends Component {
         this.readFile(files[0],(image)=>this.updateImageList(image))
     }
 
-    onRemove = (id) =>{
+    onRemove = (index) =>{
+        // axios.get(`/api/users/removeimage?public_id=${id}`)
+        // .then(response =>{
+        //     let images = this.state.uploadedFiles.filter(item => {
+        //         return item.public_id !== id;
+        //     });
+        //     this.setState({
+        //         uploading: false,
+        //         uploadedFiles: images
+        //     },()=>{
+        //         this.props.imagesHandler(images)
+        //     })
+        // })
         this.setState({ uploading: true });
-        axios.get(`/api/users/removeimage?public_id=${id}`)
-        .then(response =>{
-            let images = this.state.uploadedFiles.filter(item => {
-                return item.public_id !== id;
-            });
-            this.setState({
-                uploading: false,
-                uploadedFiles: images
-            },()=>{
-                this.props.imagesHandler(images)
-            })
+        let images = this.state.uploadedFiles.filter((item,i) => {
+            if (i != index) return item
+        });
+        this.setState({
+            uploading: false,
+            uploadedFiles: images
+        },()=>{
+            this.props.imagesHandler(images)
         })
     }
 
@@ -80,7 +89,7 @@ class FileUpload extends Component {
         this.state.uploadedFiles.map((item,index) => (
             <div className='dropzone_UploadedImg_wrapper'
                 key={index} >
-                <FontAwesomeIcon className="delete_image_icon" onClick={() => this.onRemove(item.public_id)}
+                <FontAwesomeIcon className="delete_image_icon" onClick={() => this.onRemove(index)}
                     icon={faTimesCircle} />
                 <div className='uploaded_img'>
                     <img className="uploaded_img" src={item} alt="photo"/>

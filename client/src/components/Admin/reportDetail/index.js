@@ -39,10 +39,7 @@ class ReportDetail extends Component {
         severity: "",
         message: "",
 
-        restrictedFunctions: [{
-            func: "Like",
-            time: 7,
-        }],
+        restrictedFunctions: [],
 
         err: false,
         func: "",
@@ -521,20 +518,22 @@ class ReportDetail extends Component {
                                                         dialogType: "invalidReport",
                                                     })
                                                 }}>Nội dung không vi phạm</button>
+                                                {detail.reportType == "user" ? 
+                                                 <button className="btn_restrict" onClick={() => {
+                                                    this.setState({
+                                                        DialogShowing: true,
+                                                        dialogType: "restrictFunctions",
+                                                    })
+                                                }}>Hạn chế tài khoản</button>: 
                                                 <button className="btn_delete" onClick={() => {
                                                     this.setState({
                                                         DialogShowing: true,
                                                         dialogType: "deleteConfirm",
                                                     })
                                                 }}>Xóa nội dung</button>
-                                                 <button className="btn_restrict" onClick={() => {
-                                                    this.setState({
-                                                        DialogShowing: true,
-                                                        dialogType: "restrictFunctions",
-                                                    })
-                                                }}>Hạn chế tài khoản</button>
+                                                }
                                         </div>
-                                                : <p>Đã xử lý ngày: <b>{moment(detail.updatedAt).fromNow()} </b></p>
+                                        : <p>Đã xử lý ngày: <b>{moment(detail.updatedAt).fromNow()} </b></p>
                                     }
                                 </div>
                             </div>

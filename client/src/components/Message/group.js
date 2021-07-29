@@ -16,16 +16,19 @@ import { AvatarGroup } from '@material-ui/lab';
 import moment from 'moment';
 
 class Group extends Component {
-
+    checkBlokedUser = (con)=>{
+       return con.user.find(users=>
+        this.props.yourProfile.blockedUsers.includes(users._id)&&con.type=='personal')
+    }
     render() {
         return (
             <div className="message_box">
-
                 {
                     this.props.messages ?
                         this.props.messages.grouplist ?
                             this.props.messages.grouplist.map(con => {
                                 return (
+                                    this.checkBlokedUser(con)?'':
                                     con.disabledBy.includes(this.props.yourProfile._id)?'':
                                     <div onClick={() => { this.props.seenGroupMess(con._id); console.log('clicked') }}>
                                         {
@@ -165,7 +168,7 @@ class Group extends Component {
                         : ''
                 }
                 
-            </div >
+            </div>
 
         )
     }

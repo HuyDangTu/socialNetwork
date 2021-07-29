@@ -36,30 +36,31 @@ class Footer extends Component {
     }
     prepareCaller= ()=>{
         //Initializing a peer connection
-        var servers = { 'iceServers': [
+        var servers = { 'iceServers': 
+        [
             {
-                "url": "stun:global.stun.twilio.com:3478?transport=udp",
-                "urls": "stun:global.stun.twilio.com:3478?transport=udp"
+                url: 'stun:global.stun.twilio.com:3478?transport=udp',
+                urls: 'stun:global.stun.twilio.com:3478?transport=udp'
             },
             {
-                "url": "turn:global.turn.twilio.com:3478?transport=udp",
-                "username": "68e4f24ef90901b45e096ebc937611bb27c33656214c08d4b1885c9c19c240f1",
-                "urls": "turn:global.turn.twilio.com:3478?transport=udp",
-                "credential": "3rxn3/JfFZpyRMIU+j/8kuEvmhyihxy++8Icf+/LTFw="
+                url: 'turn:global.turn.twilio.com:3478?transport=udp',
+                username: '4296cd76809abb6a16a53feddcfa1b6800b8bc62263233b6e7a497143a70ba8b',
+                urls: 'turn:global.turn.twilio.com:3478?transport=udp',
+                credential: 'Wv4zAJUK9QD+NQwYSC8iNuHehOH49PYws6D5uG63azs='
             },
             {
-                "url": "turn:global.turn.twilio.com:3478?transport=tcp",
-                "username": "68e4f24ef90901b45e096ebc937611bb27c33656214c08d4b1885c9c19c240f1",
-                "urls": "turn:global.turn.twilio.com:3478?transport=tcp",
-                "credential": "3rxn3/JfFZpyRMIU+j/8kuEvmhyihxy++8Icf+/LTFw="
+                url: 'turn:global.turn.twilio.com:3478?transport=tcp',
+                username: '4296cd76809abb6a16a53feddcfa1b6800b8bc62263233b6e7a497143a70ba8b',
+                urls: 'turn:global.turn.twilio.com:3478?transport=tcp',
+                credential: 'Wv4zAJUK9QD+NQwYSC8iNuHehOH49PYws6D5uG63azs='
             },
             {
-                "url": "turn:global.turn.twilio.com:443?transport=tcp",
-                "username": "68e4f24ef90901b45e096ebc937611bb27c33656214c08d4b1885c9c19c240f1",
-                "urls": "turn:global.turn.twilio.com:443?transport=tcp",
-                "credential": "3rxn3/JfFZpyRMIU+j/8kuEvmhyihxy++8Icf+/LTFw="
+                url: 'turn:global.turn.twilio.com:443?transport=tcp',
+                username: '4296cd76809abb6a16a53feddcfa1b6800b8bc62263233b6e7a497143a70ba8b',
+                urls: 'turn:global.turn.twilio.com:443?transport=tcp',
+                credential: 'Wv4zAJUK9QD+NQwYSC8iNuHehOH49PYws6D5uG63azs='
             }
-        ]
+            ]   
         };
         this.caller = new window.RTCPeerConnection(servers);
         //Listen for ICE Candidates and send them to remote peers
@@ -198,7 +199,7 @@ class Footer extends Component {
         const pusher = new Pusher('c0e96b0fff8d0edac17d', {
             cluster: 'mt1',
             encrypted: true,
-            authEndpoint: `/api/pusher/auth/${this.props.user.userData._id}`,
+            authEndpoint: `https://enigmatic-wildwood-37510.herokuapp.com/api/pusher/auth/${this.props.user.userData._id}`,
         });
         var users = [],
             sessionDesc,

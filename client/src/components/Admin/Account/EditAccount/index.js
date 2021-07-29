@@ -210,12 +210,13 @@ class EditAccount extends Component {
         event.preventDefault();
         this.state.formData.privateMode = this.state.privateMode;
         let dataToSubmit = generateData(this.state.formData, 'update_pro')
+        console.log(dataToSubmit)
         this.props.dispatch(changeProfile(this.props.user.userData._id, dataToSubmit))
-            .then(response => {
-                console.log(response)
-                this.props.dispatch(auth());
-                this.setState({ loading: false, setSnack: true, severity: "success", message: "Thành công" })
-            })
+        .then(response => {
+            console.log(response)
+            this.props.dispatch(auth());
+            this.setState({ loading: false, setSnack: true, severity: "success", message: "Thành công" })
+        })
     }
     updateForm = (element) => {
         const newFormdata = update(element, this.state.formData, 'update_pro');
@@ -337,17 +338,17 @@ class EditAccount extends Component {
                                         </div>
                                         {
                                             this.state.edited ?
-                                        <div className="col-xl-10 col-lg-10 col-md-10 field">
+                                            <div className="col-xl-10 col-lg-10 col-md-10 field">
                                                 <Button className="send_btn" onClick={(event) => { this.submitForm(event) }}>
                                                         Gửi
                                                 </Button>
                                                 </div>
                                                 :
-                                        <div className="col-xl-10 col-lg-10 col-md-10 field">
-                                                    <Button className="send_btn disable" disabled="true" onClick={(event) => { this.submitForm(event) }}>
-                                                        Cập nhật
-                                            </Button>
-                                                </div>
+                                            <div className="col-xl-10 col-lg-10 col-md-10 field">
+                                                <Button className="send_btn disable" disabled="true" onClick={(event) => { this.submitForm(event) }}>
+                                                    Cập nhật
+                                                </Button>
+                                            </div>
                                         }
                                     </div>
                                 </form>

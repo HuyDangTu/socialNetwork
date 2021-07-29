@@ -164,7 +164,7 @@ class EditMess extends Component {
                                     )
                                 })
                             }
-                            <SearchBar sendinguserlistid={this.state.newmemberid} removelist={this.removelist} addList={this.addList} />
+                            <SearchBar yourProfile={this.props.yourProfile} sendinguserlistid={this.state.newmemberid} removelist={this.removelist} addList={this.addList} />
                         </div>
                         <hr></hr>
                         <div className="suggest">
@@ -174,8 +174,6 @@ class EditMess extends Component {
                     </div>
                 </Dialog>
             </div>
-
-
         )
     }
 }

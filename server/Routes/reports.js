@@ -400,6 +400,14 @@ router.put('/api/reports/restrictUserFunction', auth, admin, async (req, res) =>
                 amountOfTime: moment().startOf('day').add(item.time,'days').valueOf(),
                 assignedAt: Date.now(),
             })
+        }else{
+            const index = user.restrictedFunctions.findIndex(ele => ele.function == item.func)
+            user.restrictedFunctions.splice(index,1)
+            user.restrictedFunctions.push({
+                function: item.func,
+                amountOfTime: moment().startOf('day').add(item.time,'days').valueOf(),
+                assignedAt: Date.now(),
+            })
         }
     })
 

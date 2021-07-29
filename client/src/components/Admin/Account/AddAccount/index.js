@@ -140,18 +140,19 @@ class AddAccount extends Component {
             dataToSubmit.role = 1;
             this.props.dispatch(registerUser(dataToSubmit))
                 .then(response => {
+                    console.log(response)
                     if (response.payload.success) {
                         this.setState({
                             formError: false,
                             formSuccess: true
                         });
                         setTimeout(() => {
-                            this.props.history.push('/register_login')
+                            this.props.history.push('/Admin/Account')
                         }, 3000);
                     } else {
                         this.setState({
                             formError: true,
-                            ErrorMessage: response.payload.message
+                            ErrorMessage: response.payload.err
                         });
                     }
                 }).catch(e => {

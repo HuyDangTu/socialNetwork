@@ -263,7 +263,7 @@ class Message extends Component {
     outGroup = async (id, uid) => {
         await this.props.dispatch(removeMember(id, uid))
         await this.props.history.push('/message/inbox')
-        await this.props.dispatch(getGroupMessage(this.props.match.params.id))
+        // await this.props.dispatch(getGroupMessage(this.props.match.params.id))
         await window.location.reload();
         this.setState({ editmess: false })
     }
@@ -276,7 +276,6 @@ class Message extends Component {
         await this.props.dispatch(auth())
     }
     render() {
-
         console.log(this.props.messages)
         console.log(this.props.messages.grouplist)
         const mess = this.props.messages
@@ -286,7 +285,7 @@ class Message extends Component {
                 {/* {
                   this.props.messages ? this.props.messages.messlist ? this.props.messages.messlist.user1 ? this.props.messages.messlist.user1._id != this.props.user.userData._id ? 
                   this.setState({userName:this.props.messages.messlist.user1.userName,_id:this.props.messages.messlist.user1._id,avt:this.props.messages.messlist.user1.avt}) : '' :'':'':''
-             } */}
+                } */}
                 <div className="message_container">
                     <div className="message_wrapper">
                         <div className="row no-gutters">
